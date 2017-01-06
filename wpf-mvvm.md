@@ -16,6 +16,7 @@
 
 ## Creating a RelayCommand
 
+```cs
 public class RelayCommand : ICommand
 {
     private Action<object> execute;
@@ -39,6 +40,7 @@ public class RelayCommand : ICommand
         execute(parameter);
     }
 }
+```
 
 ## Use a MVVM library
 * Install MvvmLight (Libs doesn't add any scaffolding, just the libraries), see [mvvmlight.net](http://www.mvvmlight.net/)
