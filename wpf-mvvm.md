@@ -41,7 +41,7 @@ public class RelayCommand : ICommand
 }
 
 ## Use a MVVM library
-* Install MvvmLight (Libs doesn't add any scaffolding, just the libraries)
+* Install MvvmLight (Libs doesn't add any scaffolding, just the libraries), see [mvvmlight.net](http://www.mvvmlight.net/)
 * ViewModelBase
   * Set-method
   * RaisePropertyChanged

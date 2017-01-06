@@ -87,10 +87,11 @@
 * Change Orientation to Horizontal
 * Discuss "Problem" of fluid and vector based layout
     * Set Width of TextBoxes (e.g. 80)
-        ```cs
-        this.SizeToContent = SizeToContent.WidthAndHeight;
-        this.ResizeMode = ResizeMode.NoResize;
-        ```
+    ```cs
+    this.SizeToContent = SizeToContent.WidthAndHeight;
+    this.ResizeMode = ResizeMode.NoResize;
+    ```
+        
     * Add margins to StackPanel and Controls
 
 * Add CurrencyCalculator.BL to solution
