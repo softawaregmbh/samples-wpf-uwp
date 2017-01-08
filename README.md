@@ -13,7 +13,7 @@ Shows the idea behind the MVVM pattern and some best practices.
 ## UWP
 Creating a UWP app, differences to WPF, UWP features.
 
-[Open](uwp.md)
+[Open](uwp-intro.md)
 
 ## Web Services
 Creating and consuming web services.
