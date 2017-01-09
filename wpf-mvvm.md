@@ -50,4 +50,3 @@ public class RelayCommand : ICommand
 * ViewModelLocator
   * ``` DataContext="{Binding Main, Source={StaticResource Locator}}" ```
 * RelayCommand
-
