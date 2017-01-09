@@ -1,12 +1,14 @@
 # Universal Windows Platform
 
-## Todo
-* .NET Standard
-
-
 ## Intro
-* Some thoughts about the differences between the desktop and the app world: [Desktop was yesterday](uwp/slides/desktop-was-yesterday.pptx)]
-* Slide deck: [Windows 10 for developers](slides/uwp/windows10-for-developers.pptx)]
+* Slide deck: [Desktop was yesterday](uwp/slides/desktop-was-yesterday.pptx)
+* Slide deck: [Windows 10 for developers](uwp/slides/windows10-for-developers.pptx)
+* Slide deck: [The world has changed](uwp/slides/uwp-into.pptx)
+
+# .NET Core, .NET Standard
+* [.NET and Universal Windows Platform Development](https://msdn.microsoft.com/en-us/magazine/mt590967.aspx)
+* [Introducing .NET Standard](https://blogs.msdn.microsoft.com/dotnet/2016/09/26/introducing-net-standard/)
+* [.NET API Port](https://github.com/Microsoft/dotnet-apiport)
 
 ## Create a UWP app
 * Discuss the created files

@@ -50,4 +50,5 @@
         
         <!--<TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.Column="1"/>-->
     </Grid>
+    
 </Window>

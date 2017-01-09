@@ -58,6 +58,8 @@ namespace BuechiMvvm.ViewModels
             this.instrumentManager = new InstrumentManager();
 
             this.LoadInstrumentsCommand = new RelayCommand(LoadInstruments);
+
+            LoadInstruments(null);
         }
 
         private void LoadInstruments(object obj)
