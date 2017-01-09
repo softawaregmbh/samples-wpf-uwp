@@ -31,7 +31,7 @@
     </Window.Resources>
     
 
-    <Grid Margin="10">
+    <Grid Margin="10" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
@@ -68,19 +68,12 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <!--<TextBlock Text="{Binding AverageRate}" />-->
-
                         <StackPanel Orientation="Horizontal">
                             <Rectangle Width="{Binding AverageRate, Converter={StaticResource ChartWidthConverter}}" 
                                        Height="20" Fill="Green" 
                                        HorizontalAlignment="Left"/>
 
-                            <TextBlock Text="{Binding AverageRate, StringFormat=N2}" Margin="10,0,0,0" >
-                                <!--<TextBlock.Text>
-                                    <Binding Path="AverageRate"
-                                             StringFormat="{StaticResource MyStringFormat}"/>
-                                </TextBlock.Text>-->
-                            </TextBlock>
+                            <TextBlock Text="{Binding AverageRate, StringFormat=N2}" Margin="10,0,0,0" />
                         </StackPanel>
 
                     </DataTemplate>

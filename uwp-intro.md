@@ -5,8 +5,8 @@
 
 
 ## Intro
-* Some thoughts about the differences between the desktop and the app world: (Desktop was yesterday)[uwp/slides/desktop-was-yesterday.pptx]
-* Slide deck: (Windows 10 for developers)[slides/uwp/windows10-for-developers.pptx]
+* Some thoughts about the differences between the desktop and the app world: [Desktop was yesterday](uwp/slides/desktop-was-yesterday.pptx)]
+* Slide deck: [Windows 10 for developers](slides/uwp/windows10-for-developers.pptx)]
 
 ## Create a UWP app
 * Discuss the created files
