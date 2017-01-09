@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BuechiMvvm.Wpf.Views"
         xmlns:vm="clr-namespace:BuechiMvvm.ViewModels;assembly=BuechiMvvm.ViewModels"
+        xmlns:resx="clr-namespace:BuechiMvvm.Wpf.Resources"
         mc:Ignorable="d"
         Title="InstrumentsWindow" Height="300" Width="300">
     <Window.DataContext>
@@ -46,7 +47,8 @@
             
         </Grid>
 
-        <TextBlock Text="{Binding SelectedInstrument.Name}" FontSize="40" Grid.Column="1"/>
+        
+        <TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.Column="1"/>
 
     </Grid>
 </Window>

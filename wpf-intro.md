@@ -239,3 +239,39 @@ VerticalAlignment="Center" Margin="5,0,0,0" />
 ## Graphics in WPF
 * Show some controls (Rectangle, Elipse, etc.) 
 * Optional: create a history chart by using ```MonthlyRatesOfExchange```method, data binding and rectangles
+
+```xml
+<ItemsControl Name="rates" >
+    <ItemsControl.LayoutTransform>
+        <RotateTransform Angle="270" />
+    </ItemsControl.LayoutTransform>
+    <ItemsControl.ItemTemplate>
+        <DataTemplate>
+
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="{Binding AverageRate, Converter={StaticResource ChartWidthConverter}}" 
+                            Height="20" Fill="Green" 
+                            HorizontalAlignment="Left"/>
+
+                <TextBlock Text="{Binding AverageRate, StringFormat=N2}" Margin="10,0,0,0" />
+            </StackPanel>
+
+        </DataTemplate>
+    </ItemsControl.ItemTemplate>
+</ItemsControl>
+```
+
+```cs
+public class ChartWidthConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return (double)value * 100;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
