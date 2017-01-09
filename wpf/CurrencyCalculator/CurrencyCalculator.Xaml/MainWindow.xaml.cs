@@ -36,6 +36,8 @@ namespace CurrencyCalculator.Xaml
 
             this.cmbLeftCurrency.SelectedIndex = 0;
             this.cmbRightCurrency.SelectedIndex = 0;
+
+            rates.ItemsSource = this.currencyCalculator.MonthlyRatesOfExchange("CHF", "EUR", new DateTime(2016, 1, 1), new DateTime(2017, 1, 1));
         }
 
 

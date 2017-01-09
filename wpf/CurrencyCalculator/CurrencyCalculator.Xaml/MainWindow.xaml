@@ -11,6 +11,7 @@
     <Window.Resources>
 
         <conv:CurrencyUrlConverter x:Key="CurrencyUrlConverter" />
+        <conv:ChartWidthConverter x:Key="ChartWidthConverter" />
 
         <DataTemplate x:Key="CurrencyTemplate">
 
@@ -30,19 +31,62 @@
     </Window.Resources>
     
 
-    <StackPanel Orientation="Horizontal" Margin="10">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="80" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" MinWidth="80" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <TextBox Width="80" Margin="10" Name="txtLeftValue" />
+        <TextBox Margin="10" Name="txtLeftValue" 
+                 Grid.Column="0" Grid.Row="0" />
 
         <ComboBox Margin="10" SelectionChanged="OnSelectionChanged" Name="cmbLeftCurrency"
-                  ItemTemplate="{StaticResource CurrencyTemplate}">
+                  ItemTemplate="{StaticResource CurrencyTemplate}"
+                  Grid.Column="1">
             <!-- cmbLeftCurrency.ItemTemplate = new DataTemplate(..)  -->
         </ComboBox>                  
         
-        <TextBox Width="80" Margin="10" Name="txtRightValue"/>
-        <ComboBox Margin="10" SelectionChanged="OnSelectionChanged" Name="cmbRightCurrency"
-                  ItemTemplate="{StaticResource CurrencyTemplate}"/>
+        <TextBox Margin="10" Name="txtRightValue"
+                 Grid.Column="2"/>
         
-    </StackPanel>
+        <ComboBox Margin="10" SelectionChanged="OnSelectionChanged" Name="cmbRightCurrency"
+                  ItemTemplate="{StaticResource CurrencyTemplate}"
+                  Grid.Column="3"/>
+
+
+        <Viewbox Grid.Row="1">
+            <ItemsControl Name="rates" >
+                <ItemsControl.LayoutTransform>
+                    <RotateTransform Angle="270" />
+                </ItemsControl.LayoutTransform>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <!--<TextBlock Text="{Binding AverageRate}" />-->
+
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="{Binding AverageRate, Converter={StaticResource ChartWidthConverter}}" 
+                                       Height="20" Fill="Green" 
+                                       HorizontalAlignment="Left"/>
+
+                            <TextBlock Text="{Binding AverageRate, StringFormat=N2}" Margin="10,0,0,0" >
+                                <!--<TextBlock.Text>
+                                    <Binding Path="AverageRate"
+                                             StringFormat="{StaticResource MyStringFormat}"/>
+                                </TextBlock.Text>-->
+                            </TextBlock>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+    </Grid>
     
 </Window>
