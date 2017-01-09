@@ -1,0 +1,12 @@
+﻿<Application x:Class="CurrencyCalculator.Xaml.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CurrencyCalculator.Xaml"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <s:String x:Key="ApplicationName">BÜCHI Dynamic Application Name</s:String>
+        
+    </Application.Resources>
+</Application>

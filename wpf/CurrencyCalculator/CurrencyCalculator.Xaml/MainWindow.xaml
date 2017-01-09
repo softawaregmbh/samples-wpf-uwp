@@ -1,0 +1,48 @@
+﻿<Window x:Class="CurrencyCalculator.Xaml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurrencyCalculator.Xaml"
+        xmlns:conv="clr-namespace:CurrencyCalculator.Xaml.Converters"
+        mc:Ignorable="d"
+        Title="{StaticResource ApplicationName}" SizeToContent="WidthAndHeight" 
+        Height="350" Width="525">
+    <Window.Resources>
+
+        <conv:CurrencyUrlConverter x:Key="CurrencyUrlConverter" />
+
+        <DataTemplate x:Key="CurrencyTemplate">
+
+            <StackPanel Orientation="Horizontal" >
+                <Image Source="{Binding Symbol, Converter={StaticResource CurrencyUrlConverter}}" Width="30" />
+
+                <TextBlock Text="{Binding Symbol}" FontWeight="Bold" 
+                                   Margin="0,0,5,0"/>
+
+                <TextBlock Text="(" />
+                <TextBlock Text="{Binding Country}" />
+                <TextBlock Text=")" />
+            </StackPanel>
+
+        </DataTemplate>
+
+    </Window.Resources>
+    
+
+    <StackPanel Orientation="Horizontal" Margin="10">
+
+        <TextBox Width="80" Margin="10" Name="txtLeftValue" />
+
+        <ComboBox Margin="10" SelectionChanged="OnSelectionChanged" Name="cmbLeftCurrency"
+                  ItemTemplate="{StaticResource CurrencyTemplate}">
+            <!-- cmbLeftCurrency.ItemTemplate = new DataTemplate(..)  -->
+        </ComboBox>                  
+        
+        <TextBox Width="80" Margin="10" Name="txtRightValue"/>
+        <ComboBox Margin="10" SelectionChanged="OnSelectionChanged" Name="cmbRightCurrency"
+                  ItemTemplate="{StaticResource CurrencyTemplate}"/>
+        
+    </StackPanel>
+    
+</Window>
