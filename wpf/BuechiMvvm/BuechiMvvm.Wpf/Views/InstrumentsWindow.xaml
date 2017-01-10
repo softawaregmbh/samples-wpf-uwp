@@ -8,7 +8,8 @@
         xmlns:resx="clr-namespace:BuechiMvvm.Wpf.Resources"
         mc:Ignorable="d"
         DataContext="{Binding InstrumentViewModel, Source={StaticResource Locator}}"
-        Title="InstrumentsWindow" Height="300" Width="300">
+        Title="InstrumentsWindow" Height="600" Width="800"
+        Name="window">
     <!--<Window.DataContext>
         <vm:InstrumentViewModel />
     </Window.DataContext>-->
@@ -19,6 +20,7 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Menü -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -53,7 +55,54 @@
         </Grid>
 
         
-        <!--<TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.Column="1"/>-->
+        <!-- Content -->
+        <Grid Grid.Column="1" DataContext="{Binding SelectedInstrument}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Name}"
+                       FontSize="48"
+                       Grid.ColumnSpan="2" />
+
+            <TextBlock Text="Name" 
+                       Grid.Row="1" Margin="5" FontSize="22"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="5" FontSize="22" />
+
+            <TextBlock Text="Status"
+                       Grid.Row="2" />
+
+            <ComboBox Grid.Row="2" Grid.Column="1"
+                      ItemsSource="{Binding DataContext.InstrumentStatus, ElementName=window}" 
+                      SelectedItem="{Binding Status}"
+                      DisplayMemberPath="Name">
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
+
+
+            <!-- Element name binding -->
+            <TextBlock Grid.Row="3" Text="{Binding Value, StringFormat=N2, ElementName=slider}" />
+
+            <Slider Grid.Row="3" Grid.Column="1" Name="slider" Value="50" Minimum="0" Maximum="100" />
+
+        </Grid>
+
+
+
     </Grid>
     
+    <!--<TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.Column="1"/>-->
 </Window>

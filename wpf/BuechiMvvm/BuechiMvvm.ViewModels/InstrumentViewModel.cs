@@ -20,9 +20,9 @@ namespace BuechiMvvm.ViewModels
         //implemented in ObservableObject base class
         //public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Instrument> instruments;
+        private ObservableCollection<InstrumentEditViewModel> instruments;
 
-        public ObservableCollection<Instrument> Instruments
+        public ObservableCollection<InstrumentEditViewModel> Instruments
         {
             get { return instruments; }
             set
@@ -34,9 +34,19 @@ namespace BuechiMvvm.ViewModels
             }
         }
 
-        private Instrument selectedInstrument;
+        private IEnumerable<InstrumentStatus> instrumentStatus;
 
-        public Instrument SelectedInstrument
+        public IEnumerable<InstrumentStatus> InstrumentStatus
+        {
+            get { return instrumentStatus; }
+            set { this.Set(ref instrumentStatus, value); }
+        }
+
+
+
+        private InstrumentEditViewModel selectedInstrument;
+
+        public InstrumentEditViewModel SelectedInstrument
         {
             get { return selectedInstrument; }
             set { this.Set(ref selectedInstrument, value); }
@@ -60,20 +70,28 @@ namespace BuechiMvvm.ViewModels
 
             this.LoadInstrumentsCommand = new RelayCommand(LoadInstruments);
 
-            this.AddInstrumentsCommand = new RelayCommand(() => this.Instruments.Add(new Instrument()
-            {
-                Name = "L200",
-                Ip = new IpAddress(10,10,10,1)
-            }));
+            this.AddInstrumentsCommand = new RelayCommand(() => {
+                this.Instruments.Add(new InstrumentEditViewModel(new Instrument()
+                {
+                    Name = "L200",
+                    Ip = new IpAddress(10, 10, 10, 1)
+                }));
+            });
 
             LoadInstruments();
+
+            this.SelectedInstrument = this.Instruments.First();
         }
 
         private void LoadInstruments()
         {
             this.IsLoading = true;
 
-            this.Instruments = new ObservableCollection<Instrument>(this.instrumentManager.GetInstruments());
+            this.InstrumentStatus = this.instrumentManager.GetAvailableStatus();
+
+            this.Instruments = new ObservableCollection<InstrumentEditViewModel>(
+                this.instrumentManager.GetInstruments().Select(i => new InstrumentEditViewModel(i))
+            );
 
             this.IsLoading = false;
         }

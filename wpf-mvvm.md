@@ -50,3 +50,25 @@ public class RelayCommand : ICommand
 * ViewModelLocator
   * ``` DataContext="{Binding Main, Source={StaticResource Locator}}" ```
 * RelayCommand
+
+## Use an IoC framework (SimpleIoC comes with MvvmLight)
+* used for ViewModels, Services, etc.
+
+```cs
+public ViewModelLocator()
+{
+    ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+    if (ViewModelBase.IsInDesignModeStatic)
+    {
+        SimpleIoc.Default.Register<IInstrumentManager, DesignModeInstrumentManager>();
+    }
+    else
+    {
+        SimpleIoc.Default.Register<IInstrumentManager, InstrumentManager>();
+    }
+
+    // InstrumentManager gets injected by SimpleIoc
+    SimpleIoc.Default.Register<InstrumentViewModel>();
+}
+```

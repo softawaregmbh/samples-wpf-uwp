@@ -10,23 +10,33 @@ namespace BuechiMvvm.DAL
 {
     public class InstrumentManager : IInstrumentManager
     {
+        private IList<InstrumentStatus> status = null;
+
         public IEnumerable<InstrumentStatus> GetAvailableStatus()
         {
-            yield return new InstrumentStatus()
+            if (status == null)
             {
-                Id = 1,
-                Name = "Automatisch"
-            };
-            yield return new InstrumentStatus()
-            {
-                Id = 2,
-                Name = "Manuell"
-            };
-            yield return new InstrumentStatus()
-            {
-                Id = 3,
-                Name = "Init"
-            };
+                this.status = new List<InstrumentStatus>();
+                this.status.Add(new InstrumentStatus()
+                {
+                    Id = 1,
+                    Name = "Automatisch"
+                });
+
+                this.status.Add(new InstrumentStatus()
+                {
+                    Id = 2,
+                    Name = "Manuell"
+                });
+
+                this.status.Add(new InstrumentStatus()
+                {
+                    Id = 3,
+                    Name = "Init"
+                });
+            }
+
+            return status;
         }
 
         public IEnumerable<Instrument> GetInstruments()
