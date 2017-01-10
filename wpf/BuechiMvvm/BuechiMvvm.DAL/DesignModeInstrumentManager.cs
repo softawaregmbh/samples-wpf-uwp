@@ -7,7 +7,7 @@ using BuechiMvvm.Models;
 
 namespace BuechiMvvm.DAL
 {
-    public class DesignModeInstrumentManager : IInstrumentManager
+    public class DesignModeInstrumentManager
     {
         public IEnumerable<InstrumentStatus> GetAvailableStatus()
         {

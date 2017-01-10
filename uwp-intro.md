@@ -21,7 +21,6 @@
 * AutoSuggestBox
 * Responsive layout (more details below)
 
-
 ## Offline scenarios
 * Storage API
 * SQLite

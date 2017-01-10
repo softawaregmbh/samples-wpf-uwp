@@ -68,7 +68,7 @@ namespace BuechiMvvm.ViewModels
         {
             this.instrumentManager = instrumentManager;
 
-            this.LoadInstrumentsCommand = new RelayCommand(LoadInstruments);
+            this.LoadInstrumentsCommand = new RelayCommand(async () => await LoadInstruments());
 
             this.AddInstrumentsCommand = new RelayCommand(() => {
                 this.Instruments.Add(new InstrumentEditViewModel(new Instrument()
@@ -78,20 +78,23 @@ namespace BuechiMvvm.ViewModels
                 }));
             });
 
-            LoadInstruments();
-
-            this.SelectedInstrument = this.Instruments.First();
+            // not possible in constructor
+            //await LoadInstruments();
         }
 
-        private void LoadInstruments()
+        private async Task LoadInstruments()
         {
             this.IsLoading = true;
 
-            this.InstrumentStatus = this.instrumentManager.GetAvailableStatus();
+            this.InstrumentStatus = await this.instrumentManager.GetAvailableStatusAsync();
+
+            var instruments = await this.instrumentManager.GetInstrumentsAsync();
 
             this.Instruments = new ObservableCollection<InstrumentEditViewModel>(
-                this.instrumentManager.GetInstruments().Select(i => new InstrumentEditViewModel(i))
+                instruments.Select(i => new InstrumentEditViewModel(i))
             );
+
+            this.SelectedInstrument = this.Instruments.First();
 
             this.IsLoading = false;
         }

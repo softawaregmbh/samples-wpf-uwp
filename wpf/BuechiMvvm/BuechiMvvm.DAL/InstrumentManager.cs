@@ -12,7 +12,7 @@ namespace BuechiMvvm.DAL
     {
         private IList<InstrumentStatus> status = null;
 
-        public IEnumerable<InstrumentStatus> GetAvailableStatus()
+        public Task<IEnumerable<InstrumentStatus>> GetAvailableStatusAsync()
         {
             if (status == null)
             {
@@ -36,40 +36,55 @@ namespace BuechiMvvm.DAL
                 });
             }
 
-            return status;
+            return Task.FromResult<IEnumerable<InstrumentStatus>>(status);
         }
 
-        public IEnumerable<Instrument> GetInstruments()
+        public async Task<IEnumerable<Instrument>> GetInstrumentsAsync()
         {
-            var status = GetAvailableStatus().ToList();
+            var status = (await GetAvailableStatusAsync()).ToList();
             Random rand = new Random();
 
-            yield return new Instrument()
+            await Task.Delay(2000);
+
+            var instruments = new List<Instrument>();
+
+            instruments.Add( new Instrument()
             {
                 Name = "N500",
                 ArticleNumber = "A12399",
                 Ip = new IpAddress(10, 10, 10, 7),
                 Status = status[rand.Next(status.Count)],
                 SerialNumber = "ATER102394023523523"
-            };
+            });
 
-            yield return new Instrument()
+            instruments.Add(new Instrument()
             {
                 Name = "N501",
                 ArticleNumber = "A12394",
                 Ip = new IpAddress(10, 10, 10, 9),
                 Status = status[rand.Next(status.Count)],
                 SerialNumber = "ATER102394023523525"
-            };
+            });
 
-            yield return new Instrument()
+            instruments.Add(new Instrument()
             {
                 Name = "N502",
                 ArticleNumber = "A12396",
                 Ip = new IpAddress(10, 10, 10, 5),
                 Status = status[rand.Next(status.Count)],
                 SerialNumber = "ATER102394023523528"
-            };
+            });
+
+            return instruments;
         }
+
+        //public async Task<Instrument> GetInstrumentsFromDatabase()
+        //{
+        //    using (var c = new Context())
+        //    {
+        //        // ToListAsync() returns Task<Instrument>
+        //        return await c.Instruments.ToListAsync();
+        //    }
+        //}
     }
 }

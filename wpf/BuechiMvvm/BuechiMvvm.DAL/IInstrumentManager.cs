@@ -9,8 +9,8 @@ namespace BuechiMvvm.DAL
 {
     public interface IInstrumentManager
     {
-        IEnumerable<Instrument> GetInstruments();
+        Task<IEnumerable<Instrument>> GetInstrumentsAsync();
 
-        IEnumerable<InstrumentStatus> GetAvailableStatus();
+        Task<IEnumerable<InstrumentStatus>> GetAvailableStatusAsync();
     }
 }

@@ -33,11 +33,11 @@ namespace BuechiMvvm.Wpf.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                SimpleIoc.Default.Register<IInstrumentManager, DesignModeInstrumentManager>();
-            }
-            else
+            //if (ViewModelBase.IsInDesignModeStatic)
+            //{
+            //    SimpleIoc.Default.Register<IInstrumentManager, DesignModeInstrumentManager>();
+            //}
+            //else
             {
                 SimpleIoc.Default.Register<IInstrumentManager, InstrumentManager>();
             }
