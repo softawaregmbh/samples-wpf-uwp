@@ -275,3 +275,8 @@ public class ChartWidthConverter : IValueConverter
     }
 }
 ```
+
+## Multilingual interfaces
+* Create Resources (*.resx files)
+* Change custom tool of Resource from "ResXFileCodeGenerator" to **"PublicResXFileCodeGenerator"**
+* Bind to strings in XAML
