@@ -7,10 +7,11 @@
         xmlns:vm="clr-namespace:BuechiMvvm.ViewModels;assembly=BuechiMvvm.ViewModels"
         xmlns:resx="clr-namespace:BuechiMvvm.Wpf.Resources"
         mc:Ignorable="d"
+        DataContext="{Binding InstrumentViewModel, Source={StaticResource Locator}}"
         Title="InstrumentsWindow" Height="300" Width="300">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <vm:InstrumentViewModel />
-    </Window.DataContext>
+    </Window.DataContext>-->
     
     <Grid>
         <Grid.ColumnDefinitions>
