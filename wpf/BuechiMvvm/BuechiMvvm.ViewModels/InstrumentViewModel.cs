@@ -2,6 +2,7 @@
 using BuechiMvvm.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,9 @@ namespace BuechiMvvm.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //public IEnumerable<Instrument> Instruments { get; set; }
+        private ObservableCollection<Instrument> instruments;
 
-        private IEnumerable<Instrument> instruments;
-
-        public IEnumerable<Instrument> Instruments
+        public ObservableCollection<Instrument> Instruments
         {
             get { return instruments; }
             set
@@ -52,6 +51,8 @@ namespace BuechiMvvm.ViewModels
 
         public ICommand LoadInstrumentsCommand { get; set; }
 
+        public ICommand AddInstrumentsCommand { get; set; }
+
 
         public InstrumentViewModel()
         {
@@ -59,12 +60,18 @@ namespace BuechiMvvm.ViewModels
 
             this.LoadInstrumentsCommand = new RelayCommand(LoadInstruments);
 
+            this.AddInstrumentsCommand = new RelayCommand(p => this.Instruments.Add(new Instrument()
+            {
+                Name = "L200",
+                Ip = new IpAddress(10,10,10,1)
+            }));
+
             LoadInstruments(null);
         }
 
         private void LoadInstruments(object obj)
         {
-            this.Instruments = this.instrumentManager.GetInstruments();
+            this.Instruments = new ObservableCollection<Instrument>(this.instrumentManager.GetInstruments());
         }
     }
 }

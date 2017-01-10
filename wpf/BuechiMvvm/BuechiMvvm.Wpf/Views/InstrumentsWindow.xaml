@@ -22,6 +22,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Button Margin="10"
@@ -43,8 +44,11 @@
                 </ListView.ItemTemplate>
                 
             </ListView>
-            
-            
+
+            <Button Content="Add instrument"
+                    Margin="10" Grid.Row="2"
+                    Command="{Binding AddInstrumentsCommand}" />
+
         </Grid>
 
         
