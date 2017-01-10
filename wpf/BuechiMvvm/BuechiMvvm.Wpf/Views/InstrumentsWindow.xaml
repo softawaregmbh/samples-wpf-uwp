@@ -15,13 +15,20 @@
     </Window.DataContext>-->
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="200" />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Header -->
+        <TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.ColumnSpan="2"/>
+
         <!-- Menü -->
-        <Grid>
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -56,7 +63,7 @@
 
         
         <!-- Content -->
-        <Grid Grid.Column="1" DataContext="{Binding SelectedInstrument}">
+        <Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedInstrument}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -104,5 +111,4 @@
 
     </Grid>
     
-    <!--<TextBlock Text="{x:Static resx:Strings.WelcomeText}" FontSize="40" Grid.Column="1"/>-->
 </Window>
