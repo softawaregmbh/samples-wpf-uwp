@@ -24,6 +24,9 @@
 * New controls
   * AutoSuggestBox
   * GridView
+  * ProgressRing
+  * Hub
+  * SemanticZoom
 * Responsive layout (more details below)
 
 ## AutoSuggest-Box
@@ -358,6 +361,13 @@ function cameraCapture() {
   }
 }
 ```
+
+## Suspend / Resume
+* Register for **Application.Current.Suspending** event in OnNavigatedTo method of page - and unregister in OnNavigatedFrom
+* use ApplicationData.Current.LocalSettings.Values["..."] or file storage
+* react to stored state in App.xaml.cs (OnLaunched)
+* Test suspend/resume with Visual Studio Debug feature
+
 
 ## App launcher
 
