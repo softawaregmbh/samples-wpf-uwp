@@ -10,6 +10,9 @@
 * [Introducing .NET Standard](https://blogs.msdn.microsoft.com/dotnet/2016/09/26/introducing-net-standard/)
 * [.NET API Port](https://github.com/Microsoft/dotnet-apiport)
 
+## Downloadlink for Emulators
+* [Additional Emulators for Visual Studio](https://developer.microsoft.com/de-de/windows/downloads/sdk-archive)
+
 ## Create a UWP app
 * Discuss the created files
   * package.appxmanifest
