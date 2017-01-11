@@ -10,6 +10,7 @@ namespace HelloUWP.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private IPeopleManager peopleManager;
 
         private string title;
 
@@ -36,16 +37,17 @@ namespace HelloUWP.ViewModels
         }
 
 
-        public MainViewModel()
+        public MainViewModel(IPeopleManager peopleManager)
         {
             this.Title = "Hello, UWP!";
+
+            this.peopleManager = peopleManager;
 
             Initialize();
         }
 
         private async Task Initialize()
         {
-            var peopleManager = new OfflinePeopleManager(new OnlinePeopleManager());
             var people = await peopleManager.GetPeopleAsync();
 
             this.People = people.Select(p => new ViewModels.PersonViewModel()

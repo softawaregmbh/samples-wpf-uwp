@@ -1,4 +1,5 @@
-﻿using HelloUWP.ViewModels;
+﻿using HelloUWP.Data;
+using HelloUWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +28,7 @@ namespace HelloUWP
         {
             this.InitializeComponent();
 
-            this.DataContext = new MainViewModel();
+            this.DataContext = new MainViewModel(new OfflinePeopleManager(new OnlinePeopleManager()));
         }
         
         public MainViewModel ViewModel
