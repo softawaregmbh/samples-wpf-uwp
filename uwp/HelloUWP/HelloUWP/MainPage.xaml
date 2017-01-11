@@ -9,89 +9,136 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <AutoSuggestBox
-                Text="{x:Bind ViewModel.SearchText, Mode=TwoWay}"
-                TextChanged="{x:Bind ViewModel.Search}"
-                ItemsSource="{x:Bind ViewModel.SearchResult, Mode=OneWay}"
-                PlaceholderText="Search"
-                QueryIcon="Find" 
-                Grid.Row="0"
-                Width="200"
-                HorizontalAlignment="Right"
-                Margin="10">
-                <AutoSuggestBox.ItemTemplate>
-                    <DataTemplate x:DataType="vm:PersonViewModel">
-                        <TextBlock Text="{x:Bind LastName}" />
-                    </DataTemplate>
-                </AutoSuggestBox.ItemTemplate>
+            <Button 
+                FontFamily="Segoe MDL2 Assets"
+                Content="&#xE700;" 
+                Name="btnHamburger"
+                Click="btnHamburger_Click"/>
 
-            </AutoSuggestBox>
+            <!--<TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE00B;" Foreground="Red" FontSize="48"/>
+            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE006;" FontSize="48" />-->
 
-            <SemanticZoom Grid.Row="1" ScrollViewer.ZoomMode="Enabled">
-                <SemanticZoom.ZoomedInView>
+            <SplitView IsPaneOpen="True" Grid.Row="1" Name="splitView"
+                       DisplayMode="CompactInline">
+                <SplitView.Pane>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="0,20" 
+                                   Text="News" />
+
+                        <TextBlock Margin="0,20" 
+                                   Text="GridView" />
+
+                        <TextBlock Margin="0,20" 
+                                   Text="People" />
+
+                        <TextBlock Margin="0,20" 
+                                   Text="About" />
+                    </StackPanel>
+                </SplitView.Pane>
+                <SplitView.Content>
+            
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <AutoSuggestBox
+                            Text="{x:Bind ViewModel.SearchText, Mode=TwoWay}"
+                            TextChanged="{x:Bind ViewModel.Search}"
+                            ItemsSource="{x:Bind ViewModel.SearchResult, Mode=OneWay}"
+                            PlaceholderText="Search"
+                            QueryIcon="Find" 
+                            Grid.Row="0"
+                            Width="200"
+                            HorizontalAlignment="Right"
+                            Margin="10">
+                            <AutoSuggestBox.ItemTemplate>
+                                <DataTemplate x:DataType="vm:PersonViewModel">
+                                    <TextBlock Text="{x:Bind LastName}" />
+                                </DataTemplate>
+                            </AutoSuggestBox.ItemTemplate>
+
+                        </AutoSuggestBox>
+
+                        <SemanticZoom Grid.Row="1" ScrollViewer.ZoomMode="Enabled">
+                            <SemanticZoom.ZoomedInView>
                       
-                    <Hub Name="hub">
-                        <HubSection MinWidth="800" Header="News">
-                            <HubSection.Background>
-                                <ImageBrush 
-                                    ImageSource="http://softaware-new.azurewebsites.net/images/landing01.jpg"
-                                    Stretch="UniformToFill" />
-                            </HubSection.Background>
+                                <Hub Name="hub">
+                                    <HubSection MinWidth="800" Header="News">
+                                        <HubSection.Background>
+                                            <ImageBrush 
+                                                ImageSource="http://softaware-new.azurewebsites.net/images/landing01.jpg"
+                                                Stretch="UniformToFill" />
+                                        </HubSection.Background>
                     
-                        </HubSection>
-                        <HubSection Header="GridView">
-                            <DataTemplate>
+                                    </HubSection>
+                                    <HubSection Header="GridView">
+                                        <DataTemplate>
 
-                                <GridView ItemsSource="{Binding People}" 
-                                          Style="{StaticResource PeopleStyle}"
-                                          Margin="0">
-                                </GridView>
+                                            <GridView ItemsSource="{Binding People}" 
+                                                      Style="{StaticResource PeopleStyle}"
+                                                      Margin="0">
+                                            </GridView>
                         
-                            </DataTemplate>
-                        </HubSection>
+                                        </DataTemplate>
+                                    </HubSection>
 
-                        <HubSection MinWidth="600" Header="About">
-                    
-                        </HubSection>
+                                    <HubSection MinWidth="600" Header="About">
 
-                        <HubSection MinWidth="600" Header="People">
+                                        <DataTemplate>
 
-                        </HubSection>
+                                            <Button Content="Go to About..."
+                                                    Name="btnAbout"
+                                                    Click="btnAbout_Click"/>
+                                        </DataTemplate>
+                                            
+                                        
+                                    </HubSection>
 
-                        <HubSection MinWidth="600" Header="Whatever">
+                                    <HubSection MinWidth="600" Header="People">
 
-                        </HubSection>
+                                    </HubSection>
 
-                    </Hub>
+                                    <HubSection MinWidth="600" Header="Whatever">
+
+                                    </HubSection>
+
+                                </Hub>
             
             
-                </SemanticZoom.ZoomedInView>
+                            </SemanticZoom.ZoomedInView>
 
-                <SemanticZoom.ZoomedOutView>
+                            <SemanticZoom.ZoomedOutView>
 
-                    <ListView ItemsSource="{Binding SectionHeaders, ElementName=hub}">
+                                <ListView ItemsSource="{Binding SectionHeaders, ElementName=hub}">
                         
-                    </ListView>
+                                </ListView>
                     
-                </SemanticZoom.ZoomedOutView>
-            </SemanticZoom>
+                            </SemanticZoom.ZoomedOutView>
+                        </SemanticZoom>
             
           
-            <TextBox 
-                Header="First name"
-                Text="{x:Bind ViewModel.Title, Mode=TwoWay}"
-                Width="200"
-                HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBox 
+                            Header="First name"
+                            Text="{x:Bind ViewModel.Title, Mode=TwoWay}"
+                            Width="200"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" />
 
             
             
+                    </Grid>
+    
+                </SplitView.Content>
+            </SplitView>
+        
         </Grid>
-
     </Grid>
 </Page>

@@ -273,6 +273,7 @@ catch (Exception)
 ```
 
 * Hamburger-Button
+* See (Segoe MDL2 FontFamily)[https://msdn.microsoft.com/en-us/windows/uwp/style/segoe-ui-symbol-font]
 * Switch IsPaneOpen in Event-Handler or ViewModel
 
 ```xml
