@@ -26,6 +26,7 @@ namespace AsyncAwaitDemo
             InitializeComponent();
         }
 
+
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             //Task t = Task.Run(() => Task.Delay(3000));
@@ -54,6 +55,29 @@ namespace AsyncAwaitDemo
             }
             //..
             //..
+        }
+
+        private async void Foo()
+        {
+
+        }
+
+        private Task FooWithError()
+        {
+            throw new Exception("...");
+        }
+
+
+        private async void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // throws an exception but you are not informed because of missing await
+                new WebClient().DownloadDataTaskAsync("asdfasdf://asdfasdfs");
+            }
+            catch (WebException)
+            {
+            }
         }
     }
 }

@@ -7,12 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <StackPanel
+    Orientation="Vertical" HorizontalAlignment="Center"
+                VerticalAlignment="Center">
 
-        <Button Content="Call async method" 
+            <Button Content="Call async method" 
                 Click="Button_Click"
                 FontSize="48"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
+                />
+
+            <Button Content="Button 2" 
+                Name="btn2"
+                    Click="btn2_Click"
+                FontSize="48"
+                />
+
+        </StackPanel>
+        
 
     </Grid>
 </Window>
