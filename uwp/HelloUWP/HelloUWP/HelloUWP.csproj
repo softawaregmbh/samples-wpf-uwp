@@ -141,6 +141,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelloUWP.Data\HelloUWP.Data.csproj">
+      <Project>{245B5A46-C10F-4972-B545-46D8C65DA2A7}</Project>
+      <Name>HelloUWP.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using HelloUWP.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,29 +43,17 @@ namespace HelloUWP.ViewModels
             Initialize();
         }
 
-        private void Initialize()
+        private async Task Initialize()
         {
-            this.People = new List<PersonViewModel>()
+            var peopleManager = new OfflinePeopleManager(new OnlinePeopleManager());
+            var people = await peopleManager.GetPeopleAsync();
+
+            this.People = people.Select(p => new ViewModels.PersonViewModel()
             {
-                new PersonViewModel()
-                {
-                    FirstName = "Gabriele",
-                    LastName = "Käferböck",
-                    ImageUrl = "http://softaware-new.azurewebsites.net/about-us/team/images/gabriele-kaeferboeck.jpg"
-                },
-                new PersonViewModel()
-                {
-                    FirstName = "Roman",
-                    LastName = "Schacherl",
-                    ImageUrl = "http://softaware-new.azurewebsites.net/about-us/team/images/roman-schacherl.jpg"
-                },
-                new PersonViewModel()
-                {
-                    FirstName = "Daniel",
-                    LastName = "Sklenitzka",
-                    ImageUrl = "http://softaware-new.azurewebsites.net/about-us/team/images/daniel-sklenitzka.jpg"
-                }
-            };
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                ImageUrl = p.ImageUrl
+            });
 
             this.SearchResult = this.People;
         }

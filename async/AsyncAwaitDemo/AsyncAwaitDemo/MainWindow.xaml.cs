@@ -67,9 +67,15 @@ namespace AsyncAwaitDemo
             throw new Exception("...");
         }
 
+        private async Task Foo2WithError()
+        {
+            throw new Exception();
+        }
 
         private async void btn2_Click(object sender, RoutedEventArgs e)
         {
+            Foo2WithError();
+
             try
             {
                 // throws an exception but you are not informed because of missing await
