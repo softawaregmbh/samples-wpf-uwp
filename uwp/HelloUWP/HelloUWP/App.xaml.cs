@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -54,6 +55,13 @@ namespace HelloUWP
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
+
+                    var id = ApplicationData.Current.LocalSettings.Values["Id"];
+                    if (id != null)
+                    {
+                        // navigate to page..
+                        // pass parameter..
+                    }
                 }
 
                 // Place the frame in the current Window

@@ -9,9 +9,42 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="profileText.(RelativePanel.RightOf)" Value="profileImage" />
+                        <Setter Target="profileText.(RelativePanel.AlignTopWith)" Value="profileImage" />
+                        <Setter Target="profileText.(RelativePanel.Below)" Value="" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
         <StackPanel Orientation="Vertical">
             <TextBlock Text="About" FontSize="48"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+
+            <RelativePanel Grid.Row="1">
+
+                <Image Source="http://softaware-new.azurewebsites.net/about-us/team/images/roman-schacherl.jpg"
+                                                       Width="200" Name="profileImage"
+                                                       />
+
+                <TextBlock Text="Roman Schacherl ist Gründer (2004) und Geschäftsführer der Firma softaware gmbh und beschäftigt sich seit vielen Jahren mit moderner Softwareentwicklung vorwiegend im Microsoft .NET-Umfeld. Er ist als Vortragender auf Entwicklerkonferenzen im europäischen Raum (u.a. Microsoft, BASTA, NRWconf, dotnet cologne) tätig und seit 2010 nebenberuflich Lehrender an der FH Hagenberg." 
+                                                           Name="profileText"
+                                                           RelativePanel.Below="profileImage"
+                                                           TextWrapping="Wrap"
+                                                           Width="200"
+                                                           />
+
+            </RelativePanel>
+
 
             <Button Content="Save"
                     Name="btnSave"

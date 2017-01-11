@@ -1,0 +1,20 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:HelloUWP.ViewModels"
+    xmlns:local="using:HelloUWP.Resources">
+
+    <DataTemplate x:Key="PersonDataTemplate" >
+        <Grid>
+            <Border Background="Red" Opacity="0.8"
+                        Padding="5" Margin="5"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="{Binding LastName}"
+                               Foreground="White" />
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+
+</ResourceDictionary>

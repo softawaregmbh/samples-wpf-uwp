@@ -274,6 +274,7 @@ catch (Exception)
 
 * Hamburger-Button
 * See (Segoe MDL2 FontFamily)[https://msdn.microsoft.com/en-us/windows/uwp/style/segoe-ui-symbol-font]
+* (UWP-App for Segoe MDL 2)[https://www.microsoft.com/en-us/store/p/uwp-segoe-mdl2-assets/9nblggh5fzpm]
 * Switch IsPaneOpen in Event-Handler or ViewModel
 
 ```xml
@@ -373,7 +374,8 @@ function cameraCapture() {
 * Test suspend/resume with Visual Studio Debug feature
 
 
-## App launcher
+## Cortana
+* [Video from Cortana talk](https://channel9.msdn.com/Events/community-germany/NRW-Conf-2015/Talk-to-me-Cortana-in-Action)
 
 ## Design and User Experience Guidelines
 * [Microsoft Downloads](https://developer.microsoft.com/en-us/windows/apps/design)

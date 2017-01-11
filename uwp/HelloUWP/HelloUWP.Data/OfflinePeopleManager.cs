@@ -11,7 +11,7 @@ namespace HelloUWP.Data
     public class OfflinePeopleManager : IPeopleManager
     {
         private IPeopleManager onlineManager;
-        private bool isOnline = false;
+        private bool isOnline = true;
 
         public OfflinePeopleManager(IPeopleManager onlineManager)
         {

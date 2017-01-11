@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -39,7 +40,21 @@ namespace HelloUWP
 
             var parameter = e.Parameter;
 
+            Application.Current.Suspending += Current_Suspending;
+
             RefreshLiveTile();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Application.Current.Suspending -= Current_Suspending;
+        }
+
+        private void Current_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)
+        {
+            ApplicationData.Current.LocalSettings.Values["Id"] = 4711;
         }
 
         private void RefreshLiveTile()

@@ -10,6 +10,30 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                        
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="splitView.IsPaneOpen" Value="true" />
+                        <!--<Setter Target="semanticZoom.Visibility" Value="Visible" />-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <local:ContinuumStateTrigger />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnHamburger.FontSize" Value="48" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -25,7 +49,7 @@
             <!--<TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE00B;" Foreground="Red" FontSize="48"/>
             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE006;" FontSize="48" />-->
 
-            <SplitView IsPaneOpen="True" Grid.Row="1" Name="splitView"
+            <SplitView IsPaneOpen="False" Grid.Row="1" Name="splitView"
                        DisplayMode="CompactInline">
                 <SplitView.Pane>
                     <StackPanel Orientation="Vertical">
@@ -68,7 +92,9 @@
 
                         </AutoSuggestBox>
 
-                        <SemanticZoom Grid.Row="1" ScrollViewer.ZoomMode="Enabled">
+
+                        <SemanticZoom Grid.Row="1" ScrollViewer.ZoomMode="Enabled"
+                                      Name="semanticZoom" >
                             <SemanticZoom.ZoomedInView>
                       
                                 <Hub Name="hub">
@@ -80,6 +106,16 @@
                                         </HubSection.Background>
                     
                                     </HubSection>
+
+                                    <HubSection MinWidth="600" Header="People">
+
+                                        <DataTemplate>
+
+                                            
+                                        </DataTemplate>
+                                        
+                                    </HubSection>
+                                    
                                     <HubSection Header="GridView">
                                         <DataTemplate>
 
@@ -103,9 +139,6 @@
                                         
                                     </HubSection>
 
-                                    <HubSection MinWidth="600" Header="People">
-
-                                    </HubSection>
 
                                     <HubSection MinWidth="600" Header="Whatever">
 
@@ -126,14 +159,12 @@
                         </SemanticZoom>
             
           
-                        <TextBox 
+                        <!--<TextBox 
                             Header="First name"
                             Text="{x:Bind ViewModel.Title, Mode=TwoWay}"
                             Width="200"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            HorizontalAlignment="Center" VerticalAlignment="Center" />-->
 
-            
-            
                     </Grid>
     
                 </SplitView.Content>
