@@ -5,14 +5,93 @@
     xmlns:local="using:HelloUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:HelloUWP.ViewModels"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Title}"
-                   FontSize="48"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
+            <AutoSuggestBox
+                Text="{x:Bind ViewModel.SearchText, Mode=TwoWay}"
+                TextChanged="{x:Bind ViewModel.Search}"
+                ItemsSource="{x:Bind ViewModel.SearchResult, Mode=OneWay}"
+                PlaceholderText="Search"
+                QueryIcon="Find" 
+                Grid.Row="0"
+                Width="200"
+                HorizontalAlignment="Right"
+                Margin="10">
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:PersonViewModel">
+                        <TextBlock Text="{x:Bind LastName}" />
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+
+            </AutoSuggestBox>
+
+            <SemanticZoom Grid.Row="1" ScrollViewer.ZoomMode="Enabled">
+                <SemanticZoom.ZoomedInView>
+                      
+                    <Hub Name="hub">
+                        <HubSection MinWidth="800" Header="News">
+                            <HubSection.Background>
+                                <ImageBrush 
+                                    ImageSource="http://softaware-new.azurewebsites.net/images/landing01.jpg"
+                                    Stretch="UniformToFill" />
+                            </HubSection.Background>
+                    
+                        </HubSection>
+                        <HubSection Header="GridView">
+                            <DataTemplate>
+
+                                <GridView ItemsSource="{Binding People}" 
+                                          Style="{StaticResource PeopleStyle}"
+                                          Margin="0">
+                                </GridView>
+                        
+                            </DataTemplate>
+                        </HubSection>
+
+                        <HubSection MinWidth="600" Header="About">
+                    
+                        </HubSection>
+
+                        <HubSection MinWidth="600" Header="People">
+
+                        </HubSection>
+
+                        <HubSection MinWidth="600" Header="Whatever">
+
+                        </HubSection>
+
+                    </Hub>
+            
+            
+                </SemanticZoom.ZoomedInView>
+
+                <SemanticZoom.ZoomedOutView>
+
+                    <ListView ItemsSource="{Binding SectionHeaders, ElementName=hub}">
+                        
+                    </ListView>
+                    
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+            
+          
+            <TextBox 
+                Header="First name"
+                Text="{x:Bind ViewModel.Title, Mode=TwoWay}"
+                Width="200"
+                HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            
+            
+        </Grid>
 
     </Grid>
 </Page>

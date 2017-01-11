@@ -29,5 +29,13 @@ namespace HelloUWP
 
             this.DataContext = new MainViewModel();
         }
+        
+        public MainViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as MainViewModel;
+            }
+        }
     }
 }
