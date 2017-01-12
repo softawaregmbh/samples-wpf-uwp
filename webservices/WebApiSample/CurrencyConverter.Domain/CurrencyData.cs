@@ -20,9 +20,15 @@ namespace CurrencyConverter.Domain
             this.EuroRate = euroRate;
         }
 
+        /// <summary>
+        /// Currency Symbol, e.g. EUR
+        /// </summary>
         [DataMember]
         public string Symbol { get; set; }
 
+        /// <summary>
+        /// Currency name
+        /// </summary>
         [DataMember]
         public string Name { get; set; }
 

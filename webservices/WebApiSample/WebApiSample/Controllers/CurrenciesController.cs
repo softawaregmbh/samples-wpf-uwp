@@ -13,6 +13,11 @@ namespace WebApiSample.Controllers
     {
         private ICurrencyCalculator calculator = BLFactory.GetCalculator();
 
+        /// <summary>
+        /// Gets currency data by its currency symbol, e.g. EUR.
+        /// </summary>
+        /// <param name="symbol">Currency symbol in upper case</param>
+        /// <returns>A currency data object with information about the currency</returns>
         [HttpGet]
         [Route("currencies/{symbol}", Name = "GetBySymbolRoute")]
         public CurrencyData GetBySymbol(string symbol)
@@ -35,7 +40,7 @@ namespace WebApiSample.Controllers
 
         [HttpPost]
         [Route("currencies/search")]
-        public IEnumerable<CurrencyData> GetAll([FromBody]CurrencyQuery query)
+        public IEnumerable<CurrencyData> Search([FromBody]CurrencyQuery query)
         {
             var currencyCodes = calculator.GetCurrencies();
             var all = currencyCodes.Select(c => calculator.GetCurrencyData(c));
