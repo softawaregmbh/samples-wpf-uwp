@@ -24,7 +24,7 @@ var theme = themes.FirstOrDefault(p => p.Name?.ToLower() == themeConfig?.ToLower
 
 ```cs
 var themeConfig = ConfigurationManager.AppSettings["Theme"]?.ToLower() ?? "light";
-```                                                        --------------------------
+```
 
 ### Chaining of expressions
 * the first NULL occuring leads to NULL
@@ -140,7 +140,7 @@ catch (Exception e)
 
 ## Exception Filters
 ```cs
-catch (TypeInitializationException e) if (e.InnerException is ArgumentException)
+catch (TypeInitializationException e) when (e.InnerException is ArgumentException)
 {
     await LogException(e);
 }
@@ -152,8 +152,8 @@ catch (TypeInitializationException e) if (e.InnerException is ArgumentException)
 * correct build errors
 
 ```cs
-public string FullName => $"Theme: \{this.Name}, Background: \{this.BackgroundColor}";
-public string FullName => $"Theme: \{this.Name,20}, Background: \{this.BackgroundColor}";
+public string FullName => $"Theme: {this.Name}, Background: {this.BackgroundColor}";
+public string FullName => $"Theme: {this.Name,20}, Background: {this.BackgroundColor}";
 ```
 
 # C# 7

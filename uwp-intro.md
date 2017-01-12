@@ -13,6 +13,11 @@
 ## Downloadlink for Emulators
 * [Additional Emulators for Visual Studio](https://developer.microsoft.com/de-de/windows/downloads/sdk-archive)
 
+## UWP Community Toolkit
+* Additional controls, helpers, etc.
+* [Github](https://github.com/Microsoft/UWPCommunityToolkit)
+* [Documentation](http://docs.uwpcommunitytoolkit.com/)
+
 ## Create a UWP app
 * Discuss the created files
   * package.appxmanifest
