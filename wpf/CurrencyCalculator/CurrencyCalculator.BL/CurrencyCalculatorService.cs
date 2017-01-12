@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CurrencyCalculator.BL
 {
@@ -50,12 +51,13 @@ namespace CurrencyCalculator.BL
                 throw new ArgumentException("invalid currency " + currencyString);
         }
 
-        public IEnumerable<CurrencyData> GetCurrencyData()
+        public Task<IEnumerable<CurrencyData>> GetCurrencyData()
         {
             List<CurrencyData> data = new List<CurrencyData>(currencyTable.Count);
             foreach (KeyValuePair<string, Entry> pair in currencyTable)
                 data.Add(new CurrencyData(pair.Key, pair.Value.Name, pair.Value.Country));
-            return data;
+
+            return Task.FromResult<IEnumerable<CurrencyData>>(data);
         }
 
         public double RateOfExchange(string sourceCurrency, string targetCurrency)

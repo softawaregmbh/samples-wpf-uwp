@@ -30,7 +30,12 @@ namespace CurrencyCalculator.Xaml
 
             this.currencyCalculator = CurrencyCalculatorFactory.GetCalculator();
 
-            var currencies = this.currencyCalculator.GetCurrencyData();
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var currencies = await this.currencyCalculator.GetCurrencyData();
             this.cmbLeftCurrency.ItemsSource = currencies;
             this.cmbRightCurrency.ItemsSource = currencies;
 
@@ -39,7 +44,6 @@ namespace CurrencyCalculator.Xaml
 
             rates.ItemsSource = this.currencyCalculator.MonthlyRatesOfExchange("CHF", "EUR", new DateTime(2016, 1, 1), new DateTime(2017, 1, 1));
         }
-
 
         enum Conversion { LeftToRight, RightToLeft }
 

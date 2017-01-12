@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CurrencyCalculator.BL
 {
@@ -7,7 +8,7 @@ namespace CurrencyCalculator.BL
     {
         double RateOfExchange(string sourceCurrency, string targetCurrency);
         double Convert(double value, string sourceCurrency, string targetCurrency);
-        IEnumerable<CurrencyData> GetCurrencyData();
+        Task<IEnumerable<CurrencyData>> GetCurrencyData();
         IEnumerable<RangeCurrencyData> MonthlyRatesOfExchange(string sourceCurrency, string targetCurrency, DateTime from, DateTime to);
     }
 }

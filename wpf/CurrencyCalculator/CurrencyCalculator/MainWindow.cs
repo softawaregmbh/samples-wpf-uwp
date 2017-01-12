@@ -36,6 +36,11 @@ namespace CurrencyCalculator
 
         public MainWindow()
         {
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             this.currencyCalculator = CurrencyCalculatorFactory.GetCalculator();
 
             this.txtLeftValue = new TextBox()
@@ -68,7 +73,7 @@ namespace CurrencyCalculator
             //}
 
             // Version 2:
-            var currencies = currencyCalculator.GetCurrencyData();
+            var currencies = await currencyCalculator.GetCurrencyData();
             this.cmbLeftCurrency.ItemsSource = currencies;
             this.cmbRightCurrency.ItemsSource = currencies;
 
