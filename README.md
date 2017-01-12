@@ -15,6 +15,11 @@ Creating a UWP app, differences to WPF, UWP features.
 
 [Open](uwp-intro.md)
 
+## C# 6 und C# 7
+New possibilities in the C# programming language.
+
+[Open](csharp.md)
+
 ## Web Services
 Creating and consuming web services.
 

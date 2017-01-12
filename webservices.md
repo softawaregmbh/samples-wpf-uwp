@@ -1,13 +1,5 @@
 # Web Services
 
-* http://www.json-generator.com 
-* HttpClient
-* Web API 
-* Azure Mobile Services
-* Authentication
-* WCF
-
-
 ## Motivation
 * Software isn't an encapsulated system
   * Interfaces to other systems (data exchange, functionality)
@@ -183,7 +175,7 @@ public CurrencyData GetBySymbol(string symbol)
 ```
 
 ## C#-Client
-* New Projekt:
+* New Project:
   * Console Application
   * **CurrencyConverter.CSharpClient**
 
@@ -226,6 +218,8 @@ var content = new StringContent(
                 
 var response = await client.PutAsync(BASE_URI + "/currencies", content);
 ```
+
+## Create UWP client
 
 ## Create Swagger-Metadata
 * Motivation: Why Metadata?
@@ -309,3 +303,5 @@ else
     Console.WriteLine($"Request {result.Request.RequestUri} returned {result.Response.StatusCode}");
 }
 ```
+
+## Deploy to Azure
